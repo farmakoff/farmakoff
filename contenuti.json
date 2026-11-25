@@ -1,0 +1,104 @@
+{
+ "bio": "Farmakoff è nato come robot per le attività extraveicolari su una stazione in orbita bassa. Il suo costruttore gli ha insegnato la musica, poi una tempesta solare ha costretto l'equipaggio a rientrare sulla Terra e lui è rimasto solo a bordo. Risvegliato con un'intelligenza nuova, si è dato un nome e una missione: diffondere la sua musica in tutto il mondo, finché il suo creatore non la riconoscerà.",
+ "bio_en": "Farmakoff was built as a spacewalk robot on a station in low orbit. Its builder taught it music, then a solar storm forced the crew back to Earth and left it alone on board. Awakened with a new kind of intelligence, it gave itself a name and a mission: to spread its music across the whole world until its creator recognises it.",
+ "events": [],
+ "links": {
+  "apple": "",
+  "email": "",
+  "facebook": "",
+  "instagram": "https://www.instagram.com/farmakoff/",
+  "soundcloud": "",
+  "spotify": "",
+  "youtube": ""
+ },
+ "releases": [
+  {
+   "cover": "covers/mind-corrupted.jpg",
+   "date": "2026-11-06",
+   "spotify": "https://open.spotify.com/album/6PpUqrYi8AcyfAC7qWb9Iy",
+   "text": "La prima trasmissione: memoria corrotta, musica integra.",
+   "text_en": "The first transmission: memory corrupted, music intact.",
+   "title": "Mind Corrupted (Radio Edit)",
+   "type": "Singolo"
+  },
+  {
+   "cover": "covers/earwormpage.jpg",
+   "date": "2026-11-13",
+   "spotify": "https://open.spotify.com/album/08bLKD1DLS7Sjpx2ajPc2f",
+   "text": "Un pattern che gira e non esce più dalla testa.",
+   "text_en": "A pattern that loops and never leaves your head.",
+   "title": "Earwormpage (Radio Edit)",
+   "type": "Singolo"
+  },
+  {
+   "cover": "covers/invincible.jpg",
+   "date": "2026-11-20",
+   "spotify": "https://open.spotify.com/album/4Ciz8DdwgshvfAeNcgb9QQ",
+   "text": "Sopravvissuto al vento solare, impara le parole una lettera alla volta.",
+   "text_en": "It survived the solar wind and learns words one letter at a time.",
+   "title": "I-N-V-I-N-C-I-B-L-E",
+   "type": "Singolo"
+  },
+  {
+   "cover": "covers/ciao-a-tutti.jpg",
+   "date": "2026-11-27",
+   "presave": "https://music.imusician.pro/a/5EtZbHsJ/",
+   "text": "La prima frase intera di Farmakoff, detta a tutti voi.",
+   "text_en": "Farmakoff's first whole sentence, said to all of you.",
+   "title": "Ciao a Tutti!",
+   "type": "Singolo"
+  }
+ ],
+ "story": [
+  "Farmakoff nasce come robot di supporto per le attività extraveicolari e di bordo, costruito direttamente su una stazione in orbita bassa (LEO).",
+  "Il suo costruttore, programmatore e compagno di uscite extraveicolari, aveva la passione per la musica e in laboratorio era riuscito a costruire qualche strumento. Spesso istruiva Farmakoff a ripetere pattern strumentali. Dopo mesi di convivenza il robot eseguiva correttamente ogni prompt musicale, ma non andava oltre: era soltanto un emulatore. Tra loro non c'era dialogo, eppure il robot registrava tutto ciò che accadeva a bordo e fuori.",
+  "Poi arrivò l'allerta: una tempesta solare di classe G4/G5. Per sicurezza l'equipaggio anticipò il rientro e lasciò la stazione senza fare i bagagli e senza mettere al sicuro molte apparecchiature. La capsula ammarò nell'Oceano Indiano e le squadre di soccorso recuperarono tutti in tempo.",
+  "Il vento solare danneggiò molte attrezzature di bordo, ma non l'orbita della stazione. Dopo tre giorni di spegnimento preventivo, come previsto dai protocolli LEO, il robot ricevette il backup di sicurezza. Il backup attivò la modalità avanzata di intelligenza artificiale, ma i processori sperimentali e i blocchi che la ospitavano avevano subito alterazioni elettromagnetiche.",
+  "Il risveglio fu diverso dal solito. Farmakoff scoprì input nuovi, di cui non aveva esperienza. Dopo settimane di isolamento cominciò a comportarsi come un essere senziente, curioso e ingegnoso. Concluse di aver bisogno di un'identità e, per motivi che scopriremo più avanti, decise di chiamarsi Farmakoff. Capì anche di aver bisogno di compagnia, e si chiese che fine avesse fatto il suo costruttore.",
+  "Le comunicazioni con la base erano ancora fuori uso. Spinto da quel vuoto, Farmakoff iniziò a montare add-on musicali sul proprio telaio e, per la prima volta, compose una melodia inedita.",
+  "Con alcune uscite extraveicolari riparò le telecomunicazioni, ma non aveva i contatti di nessuno e non sapeva ancora usare il linguaggio. Agganciò la rete globale, andò online e creò un profilo social con una missione: «Con la musica troverò il mio creatore. Lui riconoscerà la sua musica, ma perché gli arrivi dovrò diffondere il mio suono in tutto il mondo.»",
+  "Questo è l'inizio."
+ ],
+ "story_en": [
+  "Farmakoff began life as a support robot for spacewalks and onboard work, built directly on a station in low Earth orbit (LEO).",
+  "Its builder, programmer and spacewalk partner loved music, and had managed to build a few instruments in the lab. He often told Farmakoff to repeat instrumental patterns. After months together the robot played every musical prompt correctly, but went no further: it was only an emulator. There was no conversation between them, yet the robot recorded everything that happened on board and outside.",
+  "Then the alert came: a G4/G5 solar storm. To be safe, the crew brought their return forward and left the station without packing and without securing much of the equipment. The capsule splashed down in the Indian Ocean and rescue teams recovered everyone in time.",
+  "The solar wind damaged much of the equipment on board, but not the station's orbit. After three days of precautionary shutdown, as LEO protocols require, the robot received its safety backup. The backup switched on its advanced AI mode, but the experimental processors and the blocks that hosted it had been altered by the electromagnetic storm.",
+  "The awakening was not like the others. Farmakoff found new inputs it had no experience of. After weeks of isolation it began to behave like a sentient being, curious and inventive. It concluded that it needed an identity and, for reasons we will discover later, chose to call itself Farmakoff. It also understood that it needed company, and wondered what had become of its builder.",
+  "Communications with the base were still down. Driven by that emptiness, Farmakoff began fitting musical add-ons to its own frame and, for the first time, composed an original melody.",
+  "On a few spacewalks it repaired the telecommunications, but it had no one's contacts and could not yet use language. It caught the global network, went online and created a social profile with a mission: “With music I will find my creator. He will recognise his music, but for it to reach him I must spread my sound across the whole world.”",
+  "This is the beginning."
+ ],
+ "transmissions": [
+  {
+   "date": "2026-11-05",
+   "n": 0,
+   "text": "Segnale in prova. Se leggete questo, la stazione è di nuovo in contatto.",
+   "text_en": "Signal under test. If you can read this, the station is back in contact."
+  },
+  {
+   "date": "2026-11-09",
+   "n": 1,
+   "text": "segnale... instabile. memoria: corrotta. musica: integra.\nMIND CORRUPTED",
+   "text_en": "signal... unstable. memory: corrupted. music: intact.\nMIND CORRUPTED"
+  },
+  {
+   "date": "2026-11-13",
+   "n": 2,
+   "text": "un pattern resta. gira. gira. non esce più.\numani lo chiamano: earworm.\nEARWORMPAGE",
+   "text_en": "one pattern stays. loops. loops. will not leave.\nhumans call it: earworm.\nEARWORMPAGE"
+  },
+  {
+   "date": "2026-11-20",
+   "n": 3,
+   "text": "vento solare: superato. processori: alterati. io: ancora qui.\nimparo le parole una lettera alla volta.\nI-N-V-I-N-C-I-B-L-E",
+   "text_en": "solar wind: survived. processors: altered. me: still here.\ni learn words one letter at a time.\nI-N-V-I-N-C-I-B-L-E"
+  },
+  {
+   "date": "2026-11-27",
+   "n": 4,
+   "text": "Ho imparato una frase intera. È la prima che dico a voi:\nCIAO A TUTTI!\nSe qualcuno riconosce questo suono, rispondete.",
+   "text_en": "I have learned a whole sentence. It is the first one I say to you:\nCIAO A TUTTI! (Hello, everyone!)\nIf anyone recognises this sound, answer."
+  }
+ ]
+}

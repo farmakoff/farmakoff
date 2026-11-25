@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Farmakoff</title>
+<meta name="description" content="Farmakoff: musica elettronica trasmessa da un robot in orbita bassa. Uscite, storia e registro di bordo.">
+<meta property="og:title" content="Farmakoff">
+<meta property="og:description" content="Musica elettronica trasmessa da un robot in orbita bassa.">
+<meta property="og:type" content="website">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Mondo unico, scuro: una stazione in orbita che trasmette. Testo a sinistra, robot a destra, poi registro di bordo. */
+:root{
+ --space:#0a0a12;--panel:#14131f;--line:#2a2840;--ink:#ecebf5;--mute:#9b98b3;
+ --visor:#f2a33a;--pad:#9b7bff;
+ --display:"Chakra Petch",ui-sans-serif,system-ui,sans-serif;
+ --body:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
+ --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+ color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--space);color:var(--ink);font:16px/1.6 var(--body);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;text-wrap:balance}
+a{color:var(--visor)}
+a:focus-visible,button:focus-visible,textarea:focus-visible{outline:2px solid var(--visor);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:5;background:rgba(10,10,18,.92);border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
+nav .wrap{display:flex;gap:20px;align-items:center;height:56px;overflow-x:auto;white-space:nowrap}
+nav b{font-family:var(--display);letter-spacing:.12em;margin-right:auto;font-size:1.05rem}
+nav a{color:var(--mute);text-decoration:none;font-size:.9rem}
+nav a:hover{color:var(--ink)}
+.lang{background:transparent;border:1px solid var(--line);color:var(--ink);font:500 .8rem var(--mono);padding:4px 10px;border-radius:4px;cursor:pointer}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center;padding:48px 0 40px}
+.status{font-family:var(--mono);font-size:.8rem;color:var(--pad);letter-spacing:.04em;display:flex;align-items:center;gap:8px}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--visor);display:inline-block}
+@media (prefers-reduced-motion:no-preference){.status i{animation:blink 1.6s ease-in-out infinite}@keyframes blink{50%{opacity:.25}}}
+.hero h1{font-size:clamp(3rem,10vw,5.6rem);letter-spacing:.06em;margin:14px 0 10px}
+.hero .tag{font-size:1.15rem;color:var(--mute);max-width:34ch;margin:0 0 24px}
+.hero img{width:100%;max-width:100%;height:auto;border-radius:6px;border:1px solid var(--line);display:block}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--visor);color:#1a1206;font-weight:600;text-decoration:none;padding:12px 20px;border-radius:4px;border:0;font:600 .95rem var(--body);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+section{padding:44px 0;border-top:1px solid var(--line)}
+.head{display:flex;align-items:baseline;gap:14px;margin-bottom:20px}
+.head h2{font-size:1.7rem}
+.head span{font-family:var(--mono);font-size:.78rem;color:var(--mute)}
+.story{max-width:66ch;display:flex;flex-direction:column;gap:14px}.story p{margin:0;color:var(--ink)}.story p:last-child{font-family:var(--display);font-size:1.3rem;color:var(--visor)}
+.bio{font-size:1.1rem;max-width:62ch;color:var(--ink)}
+.latest{background:rgba(20,19,31,.55);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);border:1px solid var(--line);border-left:3px solid var(--visor);border-radius:0;padding:22px}
+.latest h3{font-size:1.8rem;margin:6px 0}
+.meta{font-family:var(--mono);font-size:.8rem;color:var(--mute)}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.card{background:rgba(20,19,31,.5);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);border:1px solid var(--line);border-radius:6px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.cov{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:4px;display:block;margin-bottom:6px}
+.latest .cov{max-width:320px}
+.card.soon{border-color:var(--visor)}
+.card h3{font-size:1.15rem}
+.card p,.latest p{margin:0;color:var(--mute)}
+.links{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px;font-size:.9rem}
+.log{list-style:none;margin:0;padding:0;font-family:var(--mono);font-size:.92rem}
+.log li{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;padding:12px 0;border-bottom:1px dashed var(--line)}
+.log .n{color:var(--visor);font-variant-numeric:tabular-nums}
+.log .d{color:var(--mute);font-size:.8rem;grid-column:2}
+.log .t{grid-column:2;white-space:pre-wrap;color:var(--ink)}
+.empty{color:var(--mute);font-style:italic}
+.date{font-family:var(--mono);color:var(--pad);font-size:.85rem}
+footer{border-top:1px solid var(--line);padding:36px 0 48px;color:var(--mute);font-size:.9rem}
+footer .row a{color:var(--ink)}
+.bp{position:fixed;inset:0;display:flex;justify-content:flex-end;align-items:center;pointer-events:none;z-index:0;opacity:.38}
+.bp img{height:96vh;width:auto;max-width:none;margin-right:2vw}
+header,section,footer{position:relative;z-index:1}
+@media (max-width:720px){.bp{justify-content:center;opacity:.2}.bp img{height:88vh;margin:0}}
+@media (max-width:720px){.hero{grid-template-columns:1fr;padding-top:28px}.hero img{max-width:420px}}
+</style>
+</head>
+<body>
+<div class="bp" aria-hidden="true"><img src="fk01-front-vector.svg" alt=""></div>
+<nav><div class="wrap"><b>FARMAKOFF</b><a href="#storia" data-i="n6">La storia</a><a href="#ultima" data-i="n1">Ultima trasmissione</a><a href="#uscite" data-i="n2">Uscite</a><a href="#registro" data-i="n3">Registro di bordo</a><a href="#live" data-i="n4">Live</a><a href="#segnale" data-i="n5">Segnale</a><button class="lang" id="lang" type="button" aria-label="Switch to English">EN</button></div></nav>
+
+<header class="wrap hero">
+ <div>
+  <div class="status"><i aria-hidden="true"></i><span id="st">Segnale in ricezione…</span></div>
+  <h1>FARMAKOFF</h1>
+  <p class="tag" data-i="tag">Musica elettronica trasmessa da un robot in orbita bassa.</p>
+  <div class="row" id="herobtn"><a class="btn" href="#ultima">Ascolta l'ultima trasmissione</a></div>
+ </div>
+ <img src="farmakoff-oblo.jpg" alt="Farmakoff davanti all'oblò della stazione orbitale, con la Terra sullo sfondo: alza la mano verso il pianeta, il groove-box blu montato sull'avambraccio, visiera ambra e cuffie." width="1600" height="874">
+</header>
+
+<section id="chi"><div class="wrap">
+ <div class="head"><h2 data-i="h1">Chi trasmette</h2></div>
+ <p class="bio" id="bio"></p>
+</div></section>
+
+<section id="storia"><div class="wrap">
+ <div class="head"><h2 data-i="n6">La storia</h2><span data-i="s6">dal registro della stazione</span></div>
+ <div class="story" id="story"></div>
+</div></section>
+
+<section id="ultima"><div class="wrap">
+ <div class="head"><h2 data-i="n1">Ultima trasmissione</h2><span data-i="s1">la più recente in archivio</span></div>
+ <div id="latest"></div>
+</div></section>
+
+<section id="uscite"><div class="wrap">
+ <div class="head"><h2 data-i="n2">Uscite</h2><span id="rcount"></span></div>
+ <div class="grid" id="releases"></div>
+</div></section>
+
+<section id="registro"><div class="wrap">
+ <div class="head"><h2 data-i="n3">Registro di bordo</h2><span data-i="s3">messaggi dalla stazione</span></div>
+ <ul class="log" id="log"></ul>
+</div></section>
+
+<section id="live"><div class="wrap">
+ <div class="head"><h2>Live</h2><span data-i="s4">prossimi appuntamenti</span></div>
+ <div class="grid" id="events"></div>
+</div></section>
+
+<footer id="segnale"><div class="wrap">
+ <div class="head"><h2 style="color:var(--ink)" data-i="n5">Segnale</h2></div>
+ <div class="row" id="social"></div>
+ <p id="mail"></p>
+</div></footer>
+
+<script type="application/json" id="seed">{"bio": "Farmakoff è nato come robot per le attività extraveicolari su una stazione in orbita bassa. Il suo costruttore gli ha insegnato la musica, poi una tempesta solare ha costretto l'equipaggio a rientrare sulla Terra e lui è rimasto solo a bordo. Risvegliato con un'intelligenza nuova, si è dato un nome e una missione: diffondere la sua musica in tutto il mondo, finché il suo creatore non la riconoscerà.", "bio_en": "Farmakoff was built as a spacewalk robot on a station in low orbit. Its builder taught it music, then a solar storm forced the crew back to Earth and left it alone on board. Awakened with a new kind of intelligence, it gave itself a name and a mission: to spread its music across the whole world until its creator recognises it.", "events": [], "links": {"apple": "", "email": "", "facebook": "", "instagram": "https://www.instagram.com/farmakoff/", "soundcloud": "", "spotify": "", "youtube": ""}, "releases": [{"cover": "covers/mind-corrupted.jpg", "date": "2026-11-06", "spotify": "https://open.spotify.com/album/6PpUqrYi8AcyfAC7qWb9Iy", "text": "La prima trasmissione: memoria corrotta, musica integra.", "text_en": "The first transmission: memory corrupted, music intact.", "title": "Mind Corrupted (Radio Edit)", "type": "Singolo"}, {"cover": "covers/earwormpage.jpg", "date": "2026-11-13", "spotify": "https://open.spotify.com/album/08bLKD1DLS7Sjpx2ajPc2f", "text": "Un pattern che gira e non esce più dalla testa.", "text_en": "A pattern that loops and never leaves your head.", "title": "Earwormpage (Radio Edit)", "type": "Singolo"}, {"cover": "covers/invincible.jpg", "date": "2026-11-20", "spotify": "https://open.spotify.com/album/4Ciz8DdwgshvfAeNcgb9QQ", "text": "Sopravvissuto al vento solare, impara le parole una lettera alla volta.", "text_en": "It survived the solar wind and learns words one letter at a time.", "title": "I-N-V-I-N-C-I-B-L-E", "type": "Singolo"}, {"cover": "covers/ciao-a-tutti.jpg", "date": "2026-11-27", "presave": "https://music.imusician.pro/a/5EtZbHsJ/", "text": "La prima frase intera di Farmakoff, detta a tutti voi.", "text_en": "Farmakoff's first whole sentence, said to all of you.", "title": "Ciao a Tutti!", "type": "Singolo"}], "story": ["Farmakoff nasce come robot di supporto per le attività extraveicolari e di bordo, costruito direttamente su una stazione in orbita bassa (LEO).", "Il suo costruttore, programmatore e compagno di uscite extraveicolari, aveva la passione per la musica e in laboratorio era riuscito a costruire qualche strumento. Spesso istruiva Farmakoff a ripetere pattern strumentali. Dopo mesi di convivenza il robot eseguiva correttamente ogni prompt musicale, ma non andava oltre: era soltanto un emulatore. Tra loro non c'era dialogo, eppure il robot registrava tutto ciò che accadeva a bordo e fuori.", "Poi arrivò l'allerta: una tempesta solare di classe G4/G5. Per sicurezza l'equipaggio anticipò il rientro e lasciò la stazione senza fare i bagagli e senza mettere al sicuro molte apparecchiature. La capsula ammarò nell'Oceano Indiano e le squadre di soccorso recuperarono tutti in tempo.", "Il vento solare danneggiò molte attrezzature di bordo, ma non l'orbita della stazione. Dopo tre giorni di spegnimento preventivo, come previsto dai protocolli LEO, il robot ricevette il backup di sicurezza. Il backup attivò la modalità avanzata di intelligenza artificiale, ma i processori sperimentali e i blocchi che la ospitavano avevano subito alterazioni elettromagnetiche.", "Il risveglio fu diverso dal solito. Farmakoff scoprì input nuovi, di cui non aveva esperienza. Dopo settimane di isolamento cominciò a comportarsi come un essere senziente, curioso e ingegnoso. Concluse di aver bisogno di un'identità e, per motivi che scopriremo più avanti, decise di chiamarsi Farmakoff. Capì anche di aver bisogno di compagnia, e si chiese che fine avesse fatto il suo costruttore.", "Le comunicazioni con la base erano ancora fuori uso. Spinto da quel vuoto, Farmakoff iniziò a montare add-on musicali sul proprio telaio e, per la prima volta, compose una melodia inedita.", "Con alcune uscite extraveicolari riparò le telecomunicazioni, ma non aveva i contatti di nessuno e non sapeva ancora usare il linguaggio. Agganciò la rete globale, andò online e creò un profilo social con una missione: «Con la musica troverò il mio creatore. Lui riconoscerà la sua musica, ma perché gli arrivi dovrò diffondere il mio suono in tutto il mondo.»", "Questo è l'inizio."], "story_en": ["Farmakoff began life as a support robot for spacewalks and onboard work, built directly on a station in low Earth orbit (LEO).", "Its builder, programmer and spacewalk partner loved music, and had managed to build a few instruments in the lab. He often told Farmakoff to repeat instrumental patterns. After months together the robot played every musical prompt correctly, but went no further: it was only an emulator. There was no conversation between them, yet the robot recorded everything that happened on board and outside.", "Then the alert came: a G4/G5 solar storm. To be safe, the crew brought their return forward and left the station without packing and without securing much of the equipment. The capsule splashed down in the Indian Ocean and rescue teams recovered everyone in time.", "The solar wind damaged much of the equipment on board, but not the station's orbit. After three days of precautionary shutdown, as LEO protocols require, the robot received its safety backup. The backup switched on its advanced AI mode, but the experimental processors and the blocks that hosted it had been altered by the electromagnetic storm.", "The awakening was not like the others. Farmakoff found new inputs it had no experience of. After weeks of isolation it began to behave like a sentient being, curious and inventive. It concluded that it needed an identity and, for reasons we will discover later, chose to call itself Farmakoff. It also understood that it needed company, and wondered what had become of its builder.", "Communications with the base were still down. Driven by that emptiness, Farmakoff began fitting musical add-ons to its own frame and, for the first time, composed an original melody.", "On a few spacewalks it repaired the telecommunications, but it had no one's contacts and could not yet use language. It caught the global network, went online and created a social profile with a mission: “With music I will find my creator. He will recognise his music, but for it to reach him I must spread my sound across the whole world.”", "This is the beginning."], "transmissions": [{"date": "2026-11-05", "n": 0, "text": "Segnale in prova. Se leggete questo, la stazione è di nuovo in contatto.", "text_en": "Signal under test. If you can read this, the station is back in contact."}, {"date": "2026-11-09", "n": 1, "text": "segnale... instabile. memoria: corrotta. musica: integra.\nMIND CORRUPTED", "text_en": "signal... unstable. memory: corrupted. music: intact.\nMIND CORRUPTED"}, {"date": "2026-11-13", "n": 2, "text": "un pattern resta. gira. gira. non esce più.\numani lo chiamano: earworm.\nEARWORMPAGE", "text_en": "one pattern stays. loops. loops. will not leave.\nhumans call it: earworm.\nEARWORMPAGE"}, {"date": "2026-11-20", "n": 3, "text": "vento solare: superato. processori: alterati. io: ancora qui.\nimparo le parole una lettera alla volta.\nI-N-V-I-N-C-I-B-L-E", "text_en": "solar wind: survived. processors: altered. me: still here.\ni learn words one letter at a time.\nI-N-V-I-N-C-I-B-L-E"}, {"date": "2026-11-27", "n": 4, "text": "Ho imparato una frase intera. È la prima che dico a voi:\nCIAO A TUTTI!\nSe qualcuno riconosce questo suono, rispondete.", "text_en": "I have learned a whole sentence. It is the first one I say to you:\nCIAO A TUTTI! (Hello, everyone!)\nIf anyone recognises this sound, answer."}]}</script>
+<script>
+const EMPTY={bio:"",links:{},releases:[],transmissions:[],events:[]};
+const T={
+it:{n6:"La storia",s6:"dal registro della stazione",n1:"Ultima trasmissione",n2:"Uscite",n3:"Registro di bordo",n4:"Live",n5:"Segnale",tag:"Musica elettronica trasmessa da un robot in orbita bassa.",h1:"Chi trasmette",s1:"la più recente in archivio",s3:"messaggi dalla stazione",s4:"prossimi appuntamenti",
+ soon:"In arrivo",stOn:n=>`Segnale attivo · ultima trasmissione #${n}`,stTest:"Segnale in prova",bioNone:"Presentazione in arrivo.",out:"Uscita",noLinks:"Link di ascolto in arrivo",firstPrep:"La prima trasmissione è in preparazione.",
+ listenSp:"Ascolta su Spotify",listenLast:"Ascolta l'ultima trasmissione",log:"Registro di bordo",count:n=>`${n} in archivio`,noRel:"Nessuna uscita in archivio.",noMsg:"Nessun messaggio ricevuto.",details:"Dettagli",noLive:"Nessun live in programma.",noCh:"Canali in arrivo.",contact:"Contatti:",loc:"it-IT",sw:"EN",swLabel:"Switch to English",
+ alt:"Farmakoff davanti all'oblò della stazione orbitale, con la Terra sullo sfondo: alza la mano verso il pianeta, il groove-box blu montato sull'avambraccio, visiera ambra e cuffie."},
+en:{n6:"The story",s6:"from the station log",n1:"Latest transmission",n2:"Releases",n3:"Ship's log",n4:"Live",n5:"Signal",tag:"Electronic music transmitted by a robot in low orbit.",h1:"Who is transmitting",s1:"the most recent on file",s3:"messages from the station",s4:"upcoming shows",
+ soon:"Coming soon",stOn:n=>`Signal active · last transmission #${n}`,stTest:"Signal under test",bioNone:"Introduction coming soon.",out:"Release",noLinks:"Listening links coming soon",firstPrep:"The first transmission is being prepared.",
+ listenSp:"Listen on Spotify",listenLast:"Hear the latest transmission",log:"Ship's log",count:n=>`${n} on file`,noRel:"No releases on file yet.",noMsg:"No messages received yet.",details:"Details",noLive:"No shows scheduled.",noCh:"Channels coming soon.",contact:"Contact:",loc:"en-GB",sw:"IT",swLabel:"Passa all'italiano",
+ alt:"Farmakoff at the porthole of the orbital station with Earth behind it, raising a hand towards the planet, the blue groove-box fitted on its forearm, amber visor and headphones."}};
+let lang=(navigator.language||"").toLowerCase().startsWith("it")?"it":"en";try{const s=localStorage.getItem("fk_lang");if(s)lang=s}catch(e){}
+if(lang!=="it"&&lang!=="en")lang="it";
+const today=new Date().toISOString().slice(0,10);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const url=u=>typeof u==="string"&&/^https:\/\/[^\s"<>]+$/.test(u)?u:null;
+const fmt=d=>{try{return new Date(d+"T12:00:00").toLocaleDateString(T[lang].loc,{day:"numeric",month:"long",year:"numeric"})}catch(e){return esc(d)}};
+const tr=(o,k)=>lang==="en"&&o&&o[k+"_en"]?o[k+"_en"]:(o&&o[k])||"";
+const $=id=>document.getElementById(id);
+const LABELS={presave:"Pre-save",spotify:"Spotify",apple:"Apple Music",youtube:"YouTube",soundcloud:"SoundCloud",bandcamp:"Bandcamp",instagram:"Instagram",facebook:"Facebook",tiktok:"TikTok"};
+const linkRow=o=>Object.keys(LABELS).filter(k=>url(o&&o[k])).map(k=>`<a href="${esc(url(o[k]))}" rel="noopener">${LABELS[k]}</a>`).join("");
+function norm(d){d=d&&typeof d==="object"?d:{};return{story:Array.isArray(d.story)?d.story:[],story_en:Array.isArray(d.story_en)?d.story_en:[],bio:d.bio||"",bio_en:d.bio_en||"",links:d.links||{},releases:Array.isArray(d.releases)?d.releases:[],transmissions:Array.isArray(d.transmissions)?d.transmissions:[],events:Array.isArray(d.events)?d.events:[]}}
+function render(raw){
+ const D=norm(raw),L10=T[lang];
+ document.documentElement.lang=lang;
+ document.querySelectorAll("[data-i]").forEach(el=>{const v=L10[el.dataset.i];if(typeof v==="string")el.textContent=v});
+ $("lang").textContent=L10.sw;$("lang").setAttribute("aria-label",L10.swLabel);
+ document.querySelector(".hero img").alt=L10.alt;
+ $("bio").textContent=tr(D,"bio")||L10.bioNone;
+ const st=(lang==="en"&&D.story_en.length?D.story_en:D.story).filter(x=>typeof x==="string");
+ $("story").innerHTML=st.map(x=>`<p>${esc(x)}</p>`).join("");$("storia").hidden=!st.length;
+ const all=[...D.releases].filter(r=>r&&r.title).sort((a,b)=>String(b.date||"").localeCompare(String(a.date||"")));
+ const rel=all.filter(r=>!r.date||r.date<=today), up=all.filter(r=>r.date&&r.date>today).sort((a,b)=>a.date.localeCompare(b.date));
+ const cov=r=>typeof r.cover==="string"&&/^covers\/[a-z0-9-]+\.jpg$/.test(r.cover)?`<img class="cov" src="${r.cover}" alt="${esc((lang==="en"?"Cover of ":"Copertina di ")+r.title)}" loading="lazy" width="800" height="800">`:"";
+ const tx=[...D.transmissions].filter(t=>t&&t.text&&(!t.date||t.date<=today)).sort((a,b)=>(Number(b.n)||0)-(Number(a.n)||0));
+ const last=tx[0];
+ $("st").textContent=last?L10.stOn(String(last.n).padStart(3,"0")):L10.stTest;
+ const L=rel[0];
+ $("latest").innerHTML=L?`<div class="latest">${cov(L)}<div class="meta">${esc(L.type||L10.out)} · ${fmt(L.date)}</div><h3>${esc(L.title)}</h3>${tr(L,"text")?`<p>${esc(tr(L,"text"))}</p>`:""}<div class="links">${linkRow(L)||`<span class="empty">${L10.noLinks}</span>`}</div></div>`:`<p class="empty">${L10.firstPrep}</p>`;
+ const sp=url(L&&L.spotify)||url(D.links.spotify);
+ $("herobtn").innerHTML=(sp?`<a class="btn" href="${esc(sp)}" rel="noopener">${L10.listenSp}</a>`:`<a class="btn" href="#ultima">${L10.listenLast}</a>`)+`<a class="btn ghost" href="#registro">${L10.log}</a>`;
+ $("rcount").textContent=all.length?L10.count(all.length):"";
+ const upc=up.map(r=>`<div class="card soon">${cov(r)}<span class="date">${L10.soon} · ${fmt(r.date)}</span><h3>${esc(r.title)}</h3><span class="meta">${esc(r.type||"")}</span>${tr(r,"text")?`<p>${esc(tr(r,"text"))}</p>`:""}<div class="links">${linkRow(r)}</div></div>`).join("");
+ $("releases").innerHTML=(upc||rel.length)?upc+rel.map(r=>`<div class="card">${cov(r)}<span class="date">${fmt(r.date)}</span><h3>${esc(r.title)}</h3><span class="meta">${esc(r.type||"")}</span>${tr(r,"text")?`<p>${esc(tr(r,"text"))}</p>`:""}<div class="links">${linkRow(r)}</div></div>`).join(""):`<p class="empty">${L10.noRel}</p>`;
+ $("log").innerHTML=tx.length?tx.map(t=>`<li><span class="n">#${esc(String(t.n).padStart(3,"0"))}</span><span class="d">${t.date?fmt(t.date):""}</span><span class="t">${esc(tr(t,"text"))}</span></li>`).join(""):`<li class="empty">${L10.noMsg}</li>`;
+ const ev=D.events.filter(e=>e&&e.title&&String(e.date||"")>=today).sort((a,b)=>String(a.date).localeCompare(String(b.date)));
+ $("live").hidden=!ev.length;document.querySelector('nav a[href="#live"]').hidden=!ev.length;
+ $("events").innerHTML=ev.length?ev.map(e=>`<div class="card"><span class="date">${fmt(e.date)}</span><h3>${esc(e.title)}</h3>${e.place?`<p>${esc(e.place)}</p>`:""}${url(e.link)?`<div class="links"><a href="${esc(url(e.link))}" rel="noopener">${L10.details}</a></div>`:""}</div>`).join(""):`<p class="empty">${L10.noLive}</p>`;
+ $("social").innerHTML=linkRow(D.links)||`<span class="empty">${L10.noCh}</span>`;
+ const m=D.links.email;$("mail").innerHTML=typeof m==="string"&&/^[^\s@<>"]+@[^\s@<>"]+\.[a-z]{2,}$/i.test(m)?`${L10.contact} <span>${esc(m)}</span>`:"";
+}
+$("lang").onclick=()=>{lang=lang==="it"?"en":"it";try{localStorage.setItem("fk_lang",lang)}catch(e){}render(cur)};
+let SEED=EMPTY;try{SEED=JSON.parse(document.getElementById("seed").textContent)}catch(e){}
+let cur=SEED;render(cur);
+fetch("contenuti.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).then(d=>{if(d&&typeof d==="object"){cur=d;render(cur)}}).catch(()=>{});
+</script>
+</body>
+</html>
